@@ -2,17 +2,18 @@ import React from 'react'
 import './GameCard.css'
 import { FaStar } from "react-icons/fa";
 
-function GameCard() {
+function GameCard({ game }) {
     return (
         <div className='game-card-container'>
-            <img src='https://m.media-amazon.com/images/I/7181DgMdMhL.jpg'
-            alt='GTA VC'
-            className='thumb'/>
+            <img src={game.background_image}
+            alt={game.name}
+            className='thumb'
+            />
             <div className='card-details'>
                 <p>Action</p>
-                <h2>GTA Vice City</h2>
+                <h2>{game.name}</h2>
                 <div className='extra-details'>
-                    <div>2002</div> • <div className='rating'><FaStar className='icon'/>3.4</div>
+                    <div>{game.released?.split("-")[0]}</div> • <div className='rating'><FaStar className='icon'/>{game.rating}</div>
                 </div>
             </div>
         </div>

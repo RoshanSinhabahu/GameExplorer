@@ -2,12 +2,12 @@ import React from 'react'
 import GameCard from './GameCard'
 import './CardContainer.css'
 
-function CardContainer() {
+function CardContainer({ popGames }) {
     return (
         <div className='card-container'>
-            <GameCard />
-            <GameCard />
-            <GameCard />
+            {popGames.map((game,index)=>(
+                <GameCard key={index} game={game}/>
+            ))}
         </div>
     )
 }

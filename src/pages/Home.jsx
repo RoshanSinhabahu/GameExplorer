@@ -6,7 +6,7 @@ function Home() {
 
     useEffect(()=>{
         const fetchPopularGames = async() => {
-            const response = await fetch('https://api.rawg.io/api/games?key=1df2aae67f0f4e34bb2d6b8d53f5f06b&ordering=-rating&page_size=10');
+            const response = await fetch('https://api.rawg.io/api/games?key=1df2aae67f0f4e34bb2d6b8d53f5f06b&ordering=-rating&page_size=30');
             const data = await response.json();
             setPopGames(data.results);
         }
@@ -15,8 +15,7 @@ function Home() {
 
     return (
         <div>
-            <CardContainer />
-            <h3>{popGames[1]?.name}</h3>
+            <CardContainer popGames={popGames}/>
         </div>
     )
 }
