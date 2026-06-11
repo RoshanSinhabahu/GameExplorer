@@ -3,17 +3,18 @@ import './GameCard.css'
 import { FaStar } from "react-icons/fa";
 
 function GameCard({ game }) {
+    const {background_image,name,released,rating,genres} = game;
     return (
         <div className='game-card-container'>
-            <img src={game.background_image}
-            alt={game.name}
+            <img src={background_image}
+            alt={name}
             className='thumb'
             />
             <div className='card-details'>
-                <p>Action</p>
-                <h2>{game.name}</h2>
+                <p>{(genres?.[1]?.name)?(genres?.[1]?.name):'Action'}</p>
+                <h2>{name}</h2>
                 <div className='extra-details'>
-                    <div>{game.released?.split("-")[0]}</div> • <div className='rating'><FaStar className='icon'/>{game.rating}</div>
+                    <div>{released?.split("-")[0]}</div> • <div className='rating'><FaStar className='icon'/>{rating}</div>
                 </div>
             </div>
         </div>

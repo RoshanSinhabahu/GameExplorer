@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CardContainer from '../components/CardContainer'
+import Hero from '../components/Hero';
 
 function Home() {
     const [popGames,setPopGames] = useState([]);
@@ -15,6 +16,7 @@ function Home() {
 
     return (
         <div>
+            <Hero popGames={popGames}/>
             <CardContainer popGames={popGames}/>
         </div>
     )

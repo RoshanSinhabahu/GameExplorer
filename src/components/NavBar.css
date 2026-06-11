@@ -1,0 +1,7 @@
+.navbar-container{
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    background-image: linear-gradient(to bottom, black, transparent);
+    z-index: 10000;
+}

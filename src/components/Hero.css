@@ -1,0 +1,39 @@
+.hero-section{
+    min-height: fit-content;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-img{
+    height: 90vh;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.header-details{
+    padding-top: 40vh;
+    padding-bottom: 2rem;
+    padding-left: 10rem;
+    width: 100%;
+    position: absolute;
+    color: azure;
+    bottom: 0;
+    background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+}
+
+.header-title{
+    font-size: 4rem;
+    font-weight: 700;
+}
+.platforms{
+    display: flex;
+    gap: 1.5rem;
+    color: #9b9b9b;
+    font-weight: 600;
+}
+
+.rating{
+    color: rgb(209, 0, 0);
+    font-weight: 600;
+}
