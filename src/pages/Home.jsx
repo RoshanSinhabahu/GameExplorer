@@ -1,0 +1,24 @@
+import React, { useEffect, useState } from 'react'
+import CardContainer from '../components/CardContainer'
+
+function Home() {
+    const [popGames,setPopGames] = useState([]);
+
+    useEffect(()=>{
+        const fetchPopularGames = async() => {
+            const response = await fetch('https://api.rawg.io/api/games?key=1df2aae67f0f4e34bb2d6b8d53f5f06b&ordering=-rating&page_size=10');
+            const data = await response.json();
+            setPopGames(data.results);
+        }
+        fetchPopularGames();
+    },[])
+
+    return (
+        <div>
+            <CardContainer />
+            <h3>{popGames[1]?.name}</h3>
+        </div>
+    )
+}
+
+export default Home
