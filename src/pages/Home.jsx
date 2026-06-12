@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import CardContainer from '../components/CardContainer'
 import Hero from '../components/Hero';
+import { WeaveSpinner } from '../components/Loading'
 
 function Home() {
-    const [popGames,setPopGames] = useState(null);
+    const [popGames,setPopGames] = useState([]);
+    const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
-        const fetchPopularGames = async() => {
+        try{
+            const fetchPopularGames = async() => {
             const response = await fetch('https://api.rawg.io/api/games?key=1df2aae67f0f4e34bb2d6b8d53f5f06b&ordering=-added&page_size=30');
             const data = await response.json();
             setPopGames(data.results);
-        }
+            }
         fetchPopularGames();
-    },[])
 
+        }catch(err){
+            console.log(err);
+        }finally{
+            setLoading(false);
+        }
+    },[])
+    
+    if(loading) return <WeaveSpinner/>
     return (
         <div>
             <Hero popGames={popGames}/>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './DetailedPage.css'
 import { useLocation } from 'react-router';
+import { WeaveSpinner } from '../components/Loading';
 
 function DetailedPage() {
     const location = useLocation();
     const id = location.state?.game.id;
     const [game,setGame] = useState(null);
+    const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
         window.scrollTo(0,0);
@@ -13,12 +15,20 @@ function DetailedPage() {
 
     useEffect(()=>{
         const gameDetail = async() => {
-            const response = await fetch(`https://api.rawg.io/api/games/${id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
-            const data = await response.json();
-            setGame(data);
+            try{
+                const response = await fetch(`https://api.rawg.io/api/games/${id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
+                const data = await response.json();
+                setGame(data);
+            } catch(err){
+                console.log(err);
+            } finally{
+                setLoading(false);
+            }
         }
         gameDetail();
     },[])
+
+    if(loading) return <WeaveSpinner/>
 
     return (
         <div className='dp-container'>
@@ -26,22 +36,27 @@ function DetailedPage() {
                 <div className="top-part">
                     <div className="left-section">
                         <div className="poster">
-                            <img src='https://cdn1.epicgames.com/offer/0c40923dd1174a768f732a3b013dcff2/EGS_TheLastofUsPartI_NaughtyDogLLC_S1_2560x1440-3659b5fe340f8fc073257975b20b7f84'
+                            <img src={game?.background_image}
                             alt='image'/>
                         </div>
                     </div>
                     <div className="right-section">
-                        <p className='text-xl'>{game?.developers?.[0]?.name}</p>
-                        <h1 className='text-4xl'>{game?.name}</h1>
-                        <h3 className='tracking-[10px]'></h3>
+                        <p className='text-sm text-white/50'>{game?.developers?.[0]?.name}</p>
+                        <h1 className='text-4xl font-bold'>{game?.name}</h1>
+                        <h3 >{(game?.genres?.[0]?.name)}</h3>
+                        <h3 >{(game?.genres?.[1]?.name)}</h3>
+                        <h3 >{(game?.genres?.[2]?.name)}</h3>
+                        <h3 >{(game?.genres?.[3]?.name)}</h3>
+                        <h3 >{(game?.genres?.[4]?.name)}</h3>
                         <h3>{game?.rating}</h3>
                         <h3>{game?.released.split("-").join(" ")}</h3>
                         <p className='py-5'>{game?.description_raw.split(".").slice(0,3).join(".")+"."}</p>
                         <div className="platforms">
-                            <span className="platform">Windows</span>
-                            <span className="platform">MacOS</span>
-                            <span className="platform">Android</span>
-                            <span className="platform">X Box</span>
+                            <span className="platform">{game?.platforms?.[0]?.platform?.name}</span>
+                            <span className="platform">{game?.platforms?.[1]?.platform?.name}</span>
+                            <span className="platform">{game?.platforms?.[2]?.platform?.name}</span>
+                            <span className="platform">{game?.platforms?.[3]?.platform?.name}</span>
+                            <span className="platform">{game?.platforms?.[4]?.platform?.name}</span>
                         </div>
                     </div>
                 </div>
@@ -52,7 +67,7 @@ function DetailedPage() {
             </div>
             <div className="ss-section">
                 <p className='slog'>Moments to touch</p>
-                <h1 className='h-title'>Screen Shots</h1>
+                <h1 className='h-title'>Gallery</h1>
                 <div className='galary'>
                     <img src={game?.background_image_additional}
                     alt='img1'

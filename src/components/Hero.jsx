@@ -2,16 +2,24 @@ import { use, useEffect, useState } from 'react';
 import './Hero.css'
 import { FaStar } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { WeaveSpinner } from './Loading';
 
 const Hero = ({ popGames }) => {
     const [game,setGame] = useState(null);
     const [desc,setDesc] = useState(null);
+    const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
         const fetchData = async() =>{
-            const result = await fetch(`https://api.rawg.io/api/games/${game?.id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
-            const data = await result.json();
-            setDesc(data.description_raw);
+            try{
+                const result = await fetch(`https://api.rawg.io/api/games/${game?.id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
+                const data = await result.json();
+                setDesc(data.description_raw);
+            }catch(err){
+                console.log(err);
+            }finally{
+                setLoading(false);
+            }
         }
         fetchData();
     },[game])
@@ -20,7 +28,7 @@ const Hero = ({ popGames }) => {
         if(!popGames.length) return;
         let i = 1;
 
-        setGame(popGames[0]);
+        setGame(popGames[Math.floor(Math.random()*popGames.length)]);
 
         const interval = setInterval(()=>{
             setGame(popGames[i]);
@@ -34,6 +42,7 @@ const Hero = ({ popGames }) => {
     const handleClick = () => {
         
     }
+    if(loading) return <WeaveSpinner/>
 
     return(
         <div className="hero-section" id='hero'>
@@ -42,7 +51,7 @@ const Hero = ({ popGames }) => {
             className='hero-img'/>
             <div className="header-details">
                 <div>
-                    <p className='title-genre'>{(game?.genres?.[1]?.name)?(game?.genres?.[1]?.name):'Action'}</p>
+                    <p className='title-genre'>{(game?.genres?.[0]?.name)}</p>
                     <p className='header-title'>{game?.name}</p>
                     <p className='rating'><FaStar className='icon'/>{game?.rating}</p>
                 </div>

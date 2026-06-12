@@ -45,9 +45,9 @@
 }
 
 .galary{
-    display: grid;
+    display: flex;
+    justify-content: center;
     padding: 20px;
-    gap: 20px;
     padding-top: 2rem;
 }
 
@@ -57,8 +57,6 @@
 }
 
 .ss{
-    width: 300px;
-    height: 200px;
     object-fit: cover;
     object-position: top;
     border-radius: 20px;
@@ -66,7 +64,7 @@
 }
 
 .ss:hover{
-    transform: scale(1.15);
+    transform: scale(1.05);
 }
 
 .h-title{
