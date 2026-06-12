@@ -3,7 +3,7 @@ import CardContainer from '../components/CardContainer'
 import Hero from '../components/Hero';
 
 function Home() {
-    const [popGames,setPopGames] = useState([]);
+    const [popGames,setPopGames] = useState(null);
 
     useEffect(()=>{
         const fetchPopularGames = async() => {
