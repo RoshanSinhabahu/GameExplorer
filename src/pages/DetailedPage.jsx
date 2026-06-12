@@ -69,9 +69,14 @@ function DetailedPage() {
                 <p className='slog'>Moments to touch</p>
                 <h1 className='h-title'>Gallery</h1>
                 <div className='galary'>
+                    <div className="hover-3d w-[80%]">
                     <img src={game?.background_image_additional}
                     alt='img1'
-                    className='ss'/>
+                    className="ss"
+                    />
+                    <div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
+                    </div>
                 </div>
             </div>
             <div className="sys-req">
