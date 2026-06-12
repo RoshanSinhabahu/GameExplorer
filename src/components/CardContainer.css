@@ -4,4 +4,5 @@
     justify-content: space-between;
     gap: 20px;
     margin: 2rem 10rem 2rem 10rem;
+    scroll-margin-top: 80px;
 }

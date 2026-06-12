@@ -7,11 +7,15 @@
 .hero-img{
     height: 90vh;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
     width: 100%;
+    transition: opacity 1s ease-in-out;
 }
 
 .header-details{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     padding-top: 40vh;
     padding-bottom: 2rem;
     padding-left: 10rem;
@@ -34,6 +38,47 @@
 }
 
 .rating{
-    color: rgb(209, 0, 0);
+    color: rgb(221, 0, 0);
     font-weight: 600;
+    text-shadow: 1px 1px 5px black;
+}
+
+.description{
+    font-size: 15px;
+    width: 60%;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.title-genre{
+    letter-spacing: 10px;
+}
+
+.button-1{
+    display: flex;
+    color: #919191;
+    border: solid 1px rgba(255, 255, 255, 0.158);
+    width: fit-content;
+    padding: 10px 25px;
+    border-radius: 50px;
+    backdrop-filter: blur(1px);
+    gap: 10px;
+    transition: 0.1s ease;
+}
+
+.button-1:hover{
+    box-shadow: 0 0 20px rgba(255, 0, 149,0.5);
+    color: #ffffff;
+    transform: scale(1.01);
+}
+
+.button-1:active{
+    background-color: rgba(255, 0, 149,0.5);
+    box-shadow: 0 0 20px rgba(255, 0, 149,0.5);
+    color: #ffffff;
+}
+
+.icon-btn{
+    font-size: 20px;
+    margin-top: 1px;
 }

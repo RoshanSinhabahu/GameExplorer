@@ -11,8 +11,8 @@ function GameCard({ game }) {
             className='thumb'
             />
             <div className='card-details'>
-                <p>{(genres?.[1]?.name)?(genres?.[1]?.name):'Action'}</p>
-                <h2>{name}</h2>
+                <p className='genre'>{(genres?.[1]?.name)?(genres?.[1]?.name):'Action'}</p>
+                <h2 className='card-title'>{name}</h2>
                 <div className='extra-details'>
                     <div>{released?.split("-")[0]}</div> • <div className='rating'><FaStar className='icon'/>{rating}</div>
                 </div>
