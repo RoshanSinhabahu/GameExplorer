@@ -35,9 +35,13 @@ function DetailedPage() {
             <div className="banner-section">
                 <div className="top-part">
                     <div className="left-section">
-                        <div className="poster">
-                            <img src={game?.background_image}
-                            alt='image'/>
+                        <div className="hover-3d">
+                            <div className="poster">                            
+                                <img src={game?.background_image}
+                                alt='image'/>
+                            </div>
+                            <div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div>
                         </div>
                     </div>
                     <div className="right-section">
@@ -69,14 +73,11 @@ function DetailedPage() {
                 <p className='slog'>Moments to touch</p>
                 <h1 className='h-title'>Gallery</h1>
                 <div className='galary'>
-                    <div className="hover-3d w-[80%]">
+                    
                     <img src={game?.background_image_additional}
                     alt='img1'
                     className="ss"
-                    />
-                    <div></div><div></div><div></div><div></div>
-                    <div></div><div></div><div></div><div></div>
-                    </div>
+                    />                    
                 </div>
             </div>
             <div className="sys-req">
