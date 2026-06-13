@@ -53,13 +53,13 @@ const Hero = ({ popGames }) => {
                 <div>
                     <p className='title-genre'>{(game?.genres?.[0]?.name)}</p>
                     <p className='header-title'>{game?.name}</p>
-                    <p className='rating'><FaStar className='icon'/>{game?.rating}</p>
+                    <div className='rating-style'><FaStar className='star-icon'/><p>{game?.rating}</p></div>
                 </div>
-                <p className='description'>{desc?desc.split(".").slice(0,3).join(".")+".":"Loading description..."}</p>
+                <p className='description'>{desc?desc.split(".").slice(0,2).join(".")+".":"Loading description..."}</p>
                 <div className='platforms'>
-                {game?.genres?.map((genre) => (
-                    <h3 key={genre.id}>{genre.name}</h3>
-                ))}
+                <h3 >{game?.genres?.[0]?.name}</h3>
+                <h3 >{game?.genres?.[1]?.name}</h3>
+                <h3 >{game?.genres?.[2]?.name}</h3>
                </div>
                <button className='button-1' onClick={handleClick} ><AiOutlineExclamationCircle className='icon-btn'/>See More</button>
             </div>

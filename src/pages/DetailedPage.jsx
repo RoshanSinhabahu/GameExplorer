@@ -63,8 +63,8 @@ function DetailedPage() {
                     </div>
                 </div>
                 <div className='full-desc'>
-                    <h2 className='text-3xl'>{game?.name}</h2>
-                    <div className='pt-4' dangerouslySetInnerHTML={{__html : game?.description}} />
+                    <h2 className='text-3xl sm:text-start text-center'>{game?.name}</h2>
+                    <div className='pt-4 sm:text-small' dangerouslySetInnerHTML={{__html : game?.description}} />
                 </div>
             </div>
             <div className="ss-section">

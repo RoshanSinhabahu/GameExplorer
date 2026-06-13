@@ -10,10 +10,12 @@ const NavBar = () => {
     return(
         <div className='navbar-container'>
             <a href='#hero'>
-                <div className="logo">
-                    <img src={logo} className='logo-img'/>
-                    <div>Decode</div>
-                </div>
+                <Link to='/'>
+                    <div className="logo">
+                        <img src={logo} className='logo-img'/>
+                        <div>Decode</div>
+                    </div>
+                </Link>
             </a>
             <div className="nav-links">
                 <Link to='/'><span className='label'><RiHome5Line className='icons'/>Home</span></Link>
