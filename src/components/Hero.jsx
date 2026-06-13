@@ -57,16 +57,9 @@ const Hero = ({ popGames }) => {
                 </div>
                 <p className='description'>{desc?desc.split(".").slice(0,3).join(".")+".":"Loading description..."}</p>
                 <div className='platforms'>
-                    <h1>{game?.platforms?.[0]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[1]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[2]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[3]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[4]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[5]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[6]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[7]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[8]?.platform?.name}</h1>
-                    <h1>{game?.platforms?.[9]?.platform?.name}</h1>
+                {game?.genres?.map((genre) => (
+                    <h3 key={genre.id}>{genre.name}</h3>
+                ))}
                </div>
                <button className='button-1' onClick={handleClick} ><AiOutlineExclamationCircle className='icon-btn'/>See More</button>
             </div>

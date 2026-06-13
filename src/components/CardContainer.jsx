@@ -5,10 +5,12 @@ import { Link } from 'react-router'
 
 function CardContainer({ popGames }) {
     return (
-        <div className='card-container' id='brows'>
-            {popGames.map((game,index)=>(
-                <Link to='/details' state={{game}} key={index}><GameCard game={game}/></Link>
-            ))}
+        <div className="">
+            <div className='card-container' id='brows'>
+                {popGames.map((game,index)=>(
+                    <Link to='/details' state={{game}} key={index}><GameCard game={game}/></Link>
+                ))}
+            </div>
         </div>
     )
 }

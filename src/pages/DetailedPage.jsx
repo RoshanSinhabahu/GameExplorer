@@ -47,11 +47,9 @@ function DetailedPage() {
                     <div className="right-section">
                         <p className='text-sm text-white/50'>{game?.developers?.[0]?.name}</p>
                         <h1 className='text-4xl font-bold'>{game?.name}</h1>
-                        <h3 >{(game?.genres?.[0]?.name)}</h3>
-                        <h3 >{(game?.genres?.[1]?.name)}</h3>
-                        <h3 >{(game?.genres?.[2]?.name)}</h3>
-                        <h3 >{(game?.genres?.[3]?.name)}</h3>
-                        <h3 >{(game?.genres?.[4]?.name)}</h3>
+                        {game?.genres?.map((genre) => (
+                        <h3 key={genre.id}>{genre.name}</h3>
+                        ))}
                         <h3>{game?.rating}</h3>
                         <h3>{game?.released.split("-").join(" ")}</h3>
                         <p className='py-5'>{game?.description_raw.split(".").slice(0,3).join(".")+"."}</p>

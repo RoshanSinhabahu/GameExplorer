@@ -51,9 +51,14 @@
 }
 
 .label:hover{
-    background-color: rgba(255, 255, 255, 0.151);
+    background-color: rgba(255, 255, 255, 0.068);
     text-shadow: 0px 0px 5px rgb(255, 0, 191);
     cursor: pointer;
+}
+
+.label:active{
+    background-color: rgba(255, 255, 255, 0.151);
+    text-shadow: 0px 0px 5px rgb(255, 0, 191);
 }
 
 .label-1{
@@ -66,6 +71,10 @@
 .label-1:hover{
     background-color: rgba(255, 255, 255, 0.151);
     cursor: pointer;
+}
+
+.label-1:active{
+    background-color: rgba(255, 255, 255, 0.367);
 }
 
 .icons{
