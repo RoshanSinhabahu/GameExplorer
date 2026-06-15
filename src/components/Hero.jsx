@@ -2,7 +2,7 @@ import { use, useEffect, useState } from 'react';
 import './Hero.css'
 import { FaStar } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import { WeaveSpinner } from './Loading';
+import LoadingComp from './Loading';
 
 const Hero = ({ popGames }) => {
     const [game,setGame] = useState(null);
@@ -42,7 +42,7 @@ const Hero = ({ popGames }) => {
     const handleClick = () => {
         
     }
-    if(loading) return <WeaveSpinner/>
+    if(loading) return <LoadingComp/>
 
     return(
         <div className="hero-section" id='hero'>

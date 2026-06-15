@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CardContainer from '../components/CardContainer'
 import Hero from '../components/Hero';
-import { WeaveSpinner } from '../components/Loading'
+import LoadingComp from '../components/Loading'
+import SearchBar from '../components/SearchBar';
 
 function Home() {
     const [popGames,setPopGames] = useState([]);
@@ -23,10 +24,11 @@ function Home() {
         }
     },[])
     
-    if(loading) return <WeaveSpinner/>
+    if(loading) return <LoadingComp/>
     return (
         <div>
             <Hero popGames={popGames}/>
+            <SearchBar />
             <CardContainer popGames={popGames}/>
         </div>
     )

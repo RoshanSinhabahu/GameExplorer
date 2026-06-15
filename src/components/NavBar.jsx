@@ -9,14 +9,12 @@ import { Link } from 'react-router';
 const NavBar = () => {
     return(
         <div className='navbar-container'>
-            <a href='#hero'>
                 <Link to='/'>
                     <div className="logo">
                         <img src={logo} className='logo-img'/>
                         <div>Decode</div>
                     </div>
                 </Link>
-            </a>
             <div className="nav-links">
                 <Link to='/'><span className='label'><RiHome5Line className='icons'/>Home</span></Link>
                 <a href='#brows'><span className='label'><FiGlobe className='icons'/>Brows</span></a>

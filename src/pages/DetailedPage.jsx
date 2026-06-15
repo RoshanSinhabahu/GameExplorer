@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './DetailedPage.css'
 import { useLocation } from 'react-router';
-import { WeaveSpinner } from '../components/Loading';
+import LoadingComp from '../components/Loading';
 
 function DetailedPage() {
     const location = useLocation();
@@ -28,7 +28,7 @@ function DetailedPage() {
         gameDetail();
     },[])
 
-    if(loading) return <WeaveSpinner/>
+    if(loading) return <LoadingComp/>
 
     return (
         <div className='dp-container'>
