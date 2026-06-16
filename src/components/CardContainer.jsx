@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GameCard from './GameCard'
 import './CardContainer.css'
 import { Link } from 'react-router'
+import { useQuery } from '@tanstack/react-query'
 
 function CardContainer({ popGames }) {
+
     return (
         <div className="card-section">
             <div className='card-container' id='brows'>
