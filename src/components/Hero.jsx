@@ -3,26 +3,24 @@ import './Hero.css'
 import { FaStar } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import LoadingComp from './Loading';
+import { useQuery } from '@tanstack/react-query';
 
 const Hero = ({ popGames }) => {
     const [game,setGame] = useState(null);
-    const [desc,setDesc] = useState(null);
-    const [loading,setLoading] = useState(true);
 
-    useEffect(()=>{
-        const fetchData = async() =>{
-            try{
-                const result = await fetch(`https://api.rawg.io/api/games/${game?.id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
-                const data = await result.json();
-                setDesc(data.description_raw);
-            }catch(err){
-                console.log(err);
-            }finally{
-                setLoading(false);
+    const { data,isLoading,error } = useQuery({
+        queryKey:["game-data",game?.id],
+        queryFn: async() => {
+            const res = await fetch(`https://api.rawg.io/api/games/${game?.id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
+
+            if(!res.ok){
+                throw new Error("Failed to fetch");
             }
-        }
-        fetchData();
-    },[game])
+
+            return res.json();
+        },
+        enabled: !!game?.id
+    })
 
     useEffect(()=>{
         if(!popGames.length) return;
@@ -37,12 +35,11 @@ const Hero = ({ popGames }) => {
             
 
         return() => clearInterval(interval);
-    },[popGames]);
+    },[]);
 
     const handleClick = () => {
         
     }
-    if(loading) return <LoadingComp/>
 
     return(
         <div className="hero-section" id='hero'>
@@ -55,7 +52,7 @@ const Hero = ({ popGames }) => {
                     <p className='header-title'>{game?.name}</p>
                     <div className='rating-style'><FaStar className='star-icon'/><p>{game?.rating}</p></div>
                 </div>
-                <p className='description'>{desc?desc.split(".").slice(0,2).join(".")+".":"Loading description..."}</p>
+                <p className='description'>{(data?.description_raw)?(data?.description_raw).split(".").slice(0,2).join(".")+".":"Loading description..."}</p>
                 <div className='platforms'>
                 <h3 >{game?.genres?.[0]?.name}</h3>
                 <h3 >{game?.genres?.[1]?.name}</h3>
