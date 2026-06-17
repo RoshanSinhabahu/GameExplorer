@@ -6,7 +6,7 @@
 .card-container{
     display: flex;
     overflow-x: auto;
-    gap: 20px;
+    gap: 18px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 }
@@ -30,9 +30,9 @@
 
 .leftBtn, .rightBtn{
     position: absolute;
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     height: 100%;
-    z-index: 1000;
+    z-index: 10000;
     width: 3rem;
     display: flex;
     justify-content: center;
@@ -57,11 +57,17 @@
 
 
 @media (max-width: 768px) {
-    /* .card-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        justify-content: center;
-    } */
+    .card-section{
+        margin: 1.5rem;
+    }
+    .leftBtn, .rightBtn{
+        font-size: 100px;
+        color: rgba(255, 255, 255, 0.266);
+    }
 
+    .leftBtn:hover, .rightBtn:hover{
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0);
+        transform: scale(1.1);
+    }
 }
