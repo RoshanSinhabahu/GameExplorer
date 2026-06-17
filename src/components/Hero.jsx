@@ -4,9 +4,13 @@ import { FaStar } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import LoadingComp from './Loading';
 import { useQuery } from '@tanstack/react-query';
+import Link from 'daisyui/components/link';
+import DetailedPage from '../pages/DetailedPage';
+import { useNavigate } from 'react-router';
 
 const Hero = ({ popGames }) => {
     const [game,setGame] = useState(null);
+    const navigate = useNavigate();
 
     const { data,isLoading,error } = useQuery({
         queryKey:["game-data",game?.id],
@@ -38,7 +42,7 @@ const Hero = ({ popGames }) => {
     },[]);
 
     const handleClick = () => {
-        
+        navigate('/details',{state:{ game }});
     }
 
     return(

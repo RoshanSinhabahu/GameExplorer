@@ -61,12 +61,13 @@
     color: #919191;
     border: solid 1px rgba(255, 255, 255, 0.158);
     width: fit-content;
-    padding: 10px 25px;
+    padding: 8px 20px;
     border-radius: 50px;
     backdrop-filter: blur(1px);
     gap: 10px;
     transition: 0.1s ease;
     font-weight: 500;
+    font-size: small;
 }
 
 .button-1:hover{
@@ -83,7 +84,7 @@
 
 .icon-btn{
     font-size: 20px;
-    margin-top: 1px;
+    margin-top: -1px;
 }
 
 .rating-style .star-icon{

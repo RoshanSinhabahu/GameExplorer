@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './DetailedPage.css'
 import { useLocation } from 'react-router';
 import LoadingComp from '../components/Loading';
+import { FaStar } from 'react-icons/fa';
 
 function DetailedPage() {
     const location = useLocation();
@@ -47,10 +48,12 @@ function DetailedPage() {
                     <div className="right-section">
                         <p className='text-sm text-white/50'>{game?.developers?.[0]?.name}</p>
                         <h1 className='text-4xl font-bold'>{game?.name}</h1>
-                        {game?.genres?.map((genre) => (
-                        <h3 key={genre.id}>{genre.name}</h3>
-                        ))}
-                        <h3>{game?.rating}</h3>
+                        <div className="genres">
+                            {game?.genres?.map((genre) => (
+                                <h3 key={genre.id}>{genre.name}</h3>
+                            ))}
+                        </div>
+                        <div className='rating-style'><FaStar className='star-icon'/><p>{game?.rating}</p></div>
                         <h3>{game?.released.split("-").join(" ")}</h3>
                         <p className='py-5'>{game?.description_raw.split(".").slice(0,3).join(".")+"."}</p>
                         <div className="platforms">

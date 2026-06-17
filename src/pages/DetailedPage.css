@@ -96,6 +96,11 @@
     border-radius: 10px;
 }
 
+.genres{
+    display: flex;
+    gap: 15px;
+}
+
 @media (max-width: 768px) {
     .banner-section{
         padding: 5rem 2rem 1rem 2rem;
