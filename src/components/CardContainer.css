@@ -1,15 +1,60 @@
 .card-section{
     padding-bottom: 2rem;
+    margin: 0 10rem 0 10rem;
 }
 
 .card-container{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    overflow-x: auto;
     gap: 20px;
-    margin: 2rem 10rem 2rem 10rem;
-    scroll-margin-top: 80px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
+
+.card{
+    scroll-snap-align: start;
+}
+
+.trated-carousel{
+    position: relative;
+    display: flex;
+    align-items: center;
+    scrollbar-width: none;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.trated-carousel::-webkit-scrollbar{
+    display: none;
+}
+
+.leftBtn, .rightBtn{
+    position: absolute;
+    color: aliceblue;
+    height: 100%;
+    z-index: 1000;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150px;
+    transition: 0.2s ease;
+}
+
+.leftBtn:hover, .rightBtn:hover{
+    background-color: rgba(0, 0, 0, 0.349);
+    backdrop-filter: blur(2px);
+    transform: scale(1.1);
+}
+
+.leftBtn{
+    left: 0;
+}
+
+.rightBtn{
+    right: 0;
+}
+
 
 @media (max-width: 768px) {
     .card-container{

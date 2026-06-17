@@ -12,7 +12,7 @@ function DetailedPage() {
 
     useEffect(()=>{
         window.scrollTo(0,0);
-    },[loading]);
+    },[])
 
     useEffect(()=>{
         const gameDetail = async() => {

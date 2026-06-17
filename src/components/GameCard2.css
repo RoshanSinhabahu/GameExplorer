@@ -1,0 +1,99 @@
+.two-game-card-container{
+    display: flex;
+    position: relative;
+    width: 300px;
+    height: 180px;
+    border-radius: 20px;
+    background-color: black;
+    overflow: hidden;
+    box-shadow: 10px,10px,10px,10px white;
+}
+
+.two-card-details{
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    bottom: 0;
+    background-image: linear-gradient(to top, black, transparent);
+    width: 100%;
+    padding: 100% 20px 20px 20px;
+    transition: 0.2s;
+    transform: translateY(20px);
+    z-index: 1000;
+}
+
+.two-game-card-container:hover .two-card-details{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.two-game-card-container:hover .thumb{
+    transform: scale(1.03);
+}
+
+.two-thumb{
+    transition: 0.5s ease-out;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.two-card-title{
+    margin-top:-5px;
+    margin-bottom: -5px;
+    font-weight: 800;
+    font-size: larger;
+    line-height: 25px;
+    margin-bottom: 5px;
+}
+
+.two-genre{
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 5px;
+}
+
+.two-icon-star{
+    color: rgb(224, 202, 0);
+    transform: scale(0.7);
+    margin-top: 5px;
+}
+
+.two-rating{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.two-extra-details{
+    display: flex;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .two-game-card-container{
+        width: 150px;
+        height: 250px;
+    }
+
+    .two-card-details{
+        opacity: 1;
+    }
+
+    .two-genre{
+        letter-spacing: 2px;
+        font-size: 13px;
+    }
+
+    .two-card-title{
+        font-weight: 700;
+
+    }
+
+    .two-extra-details{
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+}

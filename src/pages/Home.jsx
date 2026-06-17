@@ -32,6 +32,29 @@ function Home() {
         }
     });
 
+    const { data:bRevGames,isLoading:isbRevGamesLoading,error:bRevGamesError } = useQuery({
+        queryKey:["best-reviewed-games"],
+        queryFn: async() => {
+            const res = await fetch('https://api.rawg.io/api/games?key=1df2aae67f0f4e34bb2d6b8d53f5f06b&ordering=-metacritic&page_size=30');
+            if(!res.ok){
+                throw new Error("Failed to fetch games")
+            }
+            return res.json();
+        }
+    });
+
+    const { data:rUpGames,isLoading:isrUpGamesLoading,error:rUpGamesError } = useQuery({
+        queryKey:["recently-updated-games"],
+        queryFn: async() => {
+            const res = await fetch('https://api.rawg.io/api/games?key=1df2aae67f0f4e34bb2d6b8d53f5f06b&ordering=-updated&page_size=30');
+            if(!res.ok){
+                throw new Error("Failed to fetch games")
+            }
+            return res.json();
+        }
+    });
+    
+
     const { data:searchData,isLoading:isSearchLoading,error:searchError} = useQuery({
         queryKey: ["search-game",search],
         queryFn: async() => {
@@ -43,13 +66,15 @@ function Home() {
 
 
     if(isPopGamesLoading) return <LoadingComp/>;
+    if(isbRevGamesLoading) return <LoadingComp/>;
+    if(isrUpGamesLoading) return <LoadingComp/>;
     if(popError) return <p>error</p>
     
     return (
         <div>
             <Hero popGames={popGames.results}/>
             <SearchBar onSearch={handleSearch} value={input}/>
-            <CardContainer popGames={searchData?.results || popGames.results}/>
+            <CardContainer popGames={searchData?.results || popGames.results} bRevGames={bRevGames.results} rUpGames={rUpGames.results}/>
         </div>
     )
 }
