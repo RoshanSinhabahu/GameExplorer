@@ -57,11 +57,11 @@
 
 
 @media (max-width: 768px) {
-    .card-container{
+    /* .card-container{
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
         justify-content: center;
-    }
+    } */
 
 }
