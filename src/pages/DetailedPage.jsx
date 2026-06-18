@@ -14,7 +14,7 @@ function DetailedPage() {
     },[])
 
     const {data:game,isLoading,error} = useQuery({
-        queryKey:['gameDetails'],
+        queryKey:['gameDetails', id],
         queryFn: async() => {
             const res = await fetch(`https://api.rawg.io/api/games/${id}?key=1df2aae67f0f4e34bb2d6b8d53f5f06b`);
             if(!res.ok){
@@ -90,6 +90,17 @@ function DetailedPage() {
                         type="video/mp4"
                     />
                 </video>
+            </div>
+            <div className="ss-section">
+                <p className='slog'>Moments to touch</p>
+                <h1 className='h-title'>Gallery</h1>
+                <div className='galary'>
+                    
+                    <img src={game?.background_image_additional}
+                    alt='img1'
+                    className="ss"
+                    />                    
+                </div>
             </div>
             <div className="sys-req">
                 <p className='slog'>Can I Run?</p>
