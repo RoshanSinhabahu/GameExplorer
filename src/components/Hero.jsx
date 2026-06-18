@@ -45,6 +45,9 @@ const Hero = ({ popGames }) => {
         navigate('/details',{state:{ game }});
     }
 
+    if(isLoading){return <LoadingComp/>}
+    if(error){return <p>ERROR 404</p>}
+
     return(
         <div className="hero-section" id='hero'>
             <img src={game?.background_image}

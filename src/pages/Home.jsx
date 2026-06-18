@@ -68,7 +68,11 @@ function Home() {
     if(isPopGamesLoading) return <LoadingComp/>;
     if(isbRevGamesLoading) return <LoadingComp/>;
     if(isrUpGamesLoading) return <LoadingComp/>;
-    if(popError) return <p>error</p>
+    
+    if(popError) return <p>ERROR 404</p>
+    if(bRevGamesError) return <p>ERROR 404</p>
+    if(rUpGamesError) return <p>ERROR 404</p>
+    if(searchError) return <p>ERROR 404</p>
     
     return (
         <div>
