@@ -56,7 +56,7 @@ function DetailedPage() {
                     <div className="right-section">
                         <p className='text-sm text-white/50'>{game?.developers?.[0]?.name}</p>
                         <h1 className='text-4xl font-bold'>{game?.name}</h1>
-                        <h1 className='text-4xl font-bold'>{game?.id}</h1>
+                        {/* <h1 className='text-4xl font-bold'>{game?.id}</h1> */}
                         <div className="genres">
                             {game?.genres?.map((genre) => (
                                 <h3 key={genre.id}>{genre.name}</h3>

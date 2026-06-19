@@ -1,16 +1,33 @@
 import { use, useEffect, useState } from 'react';
-import './Hero.css'
-import { FaStar } from "react-icons/fa";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
-import LoadingComp from './Loading';
+import { FaStar } from "react-icons/fa";
 import { useQuery } from '@tanstack/react-query';
-import Link from 'daisyui/components/link';
-import DetailedPage from '../pages/DetailedPage';
 import { useNavigate } from 'react-router';
+import { easeInOut, easeOut, motion } from 'framer-motion';
+
+import './Hero.css'
+
+import LoadingComp from './Loading';
+import DetailedPage from '../pages/DetailedPage';
+
 
 const Hero = ({ popGames }) => {
     const [game,setGame] = useState(null);
     const navigate = useNavigate();
+
+    const motionVarient = {
+        hidden :{
+            opacity:0,
+            y:50,
+            scale:0.95,
+            originX:0
+        },
+        visible: {
+            opacity:1,
+            y:0,
+            scale:1
+        }
+    }
 
     const { data,isLoading,error } = useQuery({
         queryKey:["game-data",game?.id],
@@ -45,27 +62,35 @@ const Hero = ({ popGames }) => {
         navigate('/details',{state:{ game }});
     }
 
-    if(isLoading){return <LoadingComp/>}
     if(error){return <p>ERROR 404</p>}
 
     return(
         <div className="hero-section" id='hero'>
-            <img src={game?.background_image}
+            <motion.img src={game?.background_image}
             alt={game?.name}
-            className='hero-img'/>
+            className='hero-img'
+            initial={{opacity:0, scale:1.05 }} animate={{opacity:1, scale:1 }} transition={{duration:0.5, ease:easeInOut, delay:0}}
+            />
             <div className="header-details">
                 <div>
-                    <p className='title-genre'>{(game?.genres?.[0]?.name)}</p>
-                    <p className='header-title'>{game?.name}</p>
-                    <div className='rating-style'><FaStar className='star-icon'/><p>{game?.rating}</p></div>
+                    <motion.p 
+                    variants={motionVarient}
+                    initial='hidden'
+                    animate='visible' 
+                    transition={{duration:0.5, ease:easeInOut, delay:0}} 
+                    className='title-genre'>
+                        {(game?.genres?.[0]?.name)}
+                    </motion.p>
+                    <motion.p variants={motionVarient} initial='hidden' animate='visible' transition={{duration:0.5, ease:easeInOut, delay:0.1}} className='header-title'>{game?.name}</motion.p>
+                    <motion.div variants={motionVarient} initial='hidden' animate='visible' transition={{duration:0.5, ease:easeInOut, delay:0.2}} className='rating-style'><FaStar className='star-icon'/><p>{game?.rating}</p></motion.div>
                 </div>
-                <p className='description'>{(data?.description_raw)?(data?.description_raw).split(".").slice(0,2).join(".")+".":"Loading description..."}</p>
+                <motion.p initial={{opacity:0, y:50, scale:0.95 }} animate={{opacity:1, y:0, scale:1 }} transition={{duration:0.5, ease:easeInOut, delay:0.3}} className='description'>{(data?.description_raw)?(data?.description_raw).split(".").slice(0,2).join(".")+".":"Loading description..."}</motion.p>
                 <div className='platforms'>
-                <h3 >{game?.genres?.[0]?.name}</h3>
-                <h3 >{game?.genres?.[1]?.name}</h3>
-                <h3 >{game?.genres?.[2]?.name}</h3>
+                <motion.h3 variants={motionVarient} initial='hidden' animate='visible' transition={{duration:0.5, ease:easeInOut, delay:0.4}}  >{game?.genres?.[0]?.name}</motion.h3>
+                <motion.h3 variants={motionVarient} initial='hidden' animate='visible' transition={{duration:0.5, ease:easeInOut, delay:0.5}}  >{game?.genres?.[1]?.name}</motion.h3>
+                <motion.h3 variants={motionVarient} initial='hidden' animate='visible' transition={{duration:0.5, ease:easeInOut, delay:0.6}}  >{game?.genres?.[2]?.name}</motion.h3>
                </div>
-               <button className='button-1' onClick={handleClick} ><AiOutlineExclamationCircle className='icon-btn'/>See More</button>
+               <motion.button className='button-1' onClick={handleClick} initial={{opacity:0, scale:0.95,originX:0 }} animate={{opacity:1, scale:1 }} transition={{duration:0.5, ease:easeInOut, delay:0.7}}><AiOutlineExclamationCircle className='icon-btn'/>See More</motion.button>
             </div>
         </div>
     )
