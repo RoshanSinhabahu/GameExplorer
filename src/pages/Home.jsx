@@ -78,7 +78,7 @@ function Home() {
         <div>
             <Hero popGames={popGames.results}/>
             <SearchBar onSearch={handleSearch} value={input}/>
-            <CardContainer popGames={searchData?.results || popGames.results} bRevGames={bRevGames.results} rUpGames={rUpGames.results}/>
+            <CardContainer header={searchData?"Search Result":"Most Popular"} popGames={searchData?.results || popGames.results} bRevGames={bRevGames.results} rUpGames={rUpGames.results}/>
         </div>
     )
 }

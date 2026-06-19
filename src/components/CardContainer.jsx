@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
-function CardContainer({ popGames,bRevGames,rUpGames }) {
+function CardContainer({ header,popGames,bRevGames,rUpGames }) {
 
     const popGamesRef = useRef(null);
     const rUpRef = useRef(null);
@@ -15,7 +15,7 @@ function CardContainer({ popGames,bRevGames,rUpGames }) {
     return (
         <div className="card-section">
             {/*Most Popular games*/}
-            <div className='flex flex-row text-white text-[1.5rem] font-semibold mt-10 pb-3'><div className='w-[4px] bg-red-500 mt-[8px] mb-[8px] mr-3'></div>Most Popular</div>
+            <div className='flex flex-row text-white text-[1.5rem] font-semibold mt-10 pb-3'><div className='w-[4px] bg-red-500 mt-[8px] mb-[8px] mr-3'></div>{header}</div>
             <div className="trated-carousel"> 
                 <button className='leftBtn' onClick={()=>{popGamesRef.current.scrollLeft -= 600}}><IoIosArrowBack /></button>
                 <div className='card-container' id='brows' ref={popGamesRef}>

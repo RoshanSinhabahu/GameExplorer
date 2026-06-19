@@ -56,7 +56,7 @@ function DetailedPage() {
                     <div className="right-section">
                         <p className='text-sm text-white/50'>{game?.developers?.[0]?.name}</p>
                         <h1 className='text-4xl font-bold'>{game?.name}</h1>
-                        {/* <h1 className='text-4xl font-bold'>{game?.id}</h1> */}
+                        <h1 className='text-4xl font-bold'>{game?.id}</h1>
                         <div className="genres">
                             {game?.genres?.map((genre) => (
                                 <h3 key={genre.id}>{genre.name}</h3>
@@ -79,10 +79,11 @@ function DetailedPage() {
                     <div className='pt-4 sm:text-small' dangerouslySetInnerHTML={{__html : game?.description}} />
                 </div>
             </div>
-            <div className="video-player">
+            {trailer?.count > 0 &&
+                (<div className="video-player">
                 <div className="">
-                    <p className='slog'>Some Moments</p>
-                    <h1 className='h-title'>Trailer</h1>
+                    <p className='slog'>Moments In Motion</p>
+                    <h1 className='h-title'>Official Trailer</h1>
                 </div>
                 <video controls>
                     <source 
@@ -90,9 +91,9 @@ function DetailedPage() {
                         type="video/mp4"
                     />
                 </video>
-            </div>
+            </div>)}
             <div className="ss-section">
-                <p className='slog'>Moments to touch</p>
+                <p className='slog'>Captured Adventures</p>
                 <h1 className='h-title'>Gallery</h1>
                 <div className='galary'>
                     

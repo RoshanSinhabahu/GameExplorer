@@ -1,4 +1,6 @@
 import React from 'react'
+import PrivacyPolicy from '../pages/PrivacyPolicy';
+import { Link } from 'react-router';
 
 function Footer() {
     return (
@@ -11,10 +13,7 @@ function Footer() {
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-xs font-medium text-body sm:mt-0">
                 <li>
-                    <a href="#" className="hover:underline me-4 md:me-6">About</a>
-                </li>
-                <li>
-                    <a href="#" className="hover:underline">Privacy Policy</a>
+                    <Link to='/privacy' className="hover:underline">Privacy Policy</Link>
                 </li>
             </ul>
         </footer>
