@@ -16,9 +16,8 @@ const NavBar = () => {
                     </div>
                 </Link>
             <div className="nav-links">
-                <Link to='/'><span className='label'><RiHome5Line className='icons'/>Home</span></Link>
-                <a href='#'><span className='label'><FiGlobe className='icons'/>Brows</span></a>
-                <span className='label'>API</span>
+                <Link to='/'><span className='label'><RiHome5Line className='icons'/></span></Link>
+                <a href='#'><span className='label'><FiGlobe className='icons'/></span></a>
                 <span className='label-1'><FaRegUser className='icons'/></span>
             </div>
         </div>

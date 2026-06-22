@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import CardContainer from '../components/CardContainer'
 import Hero from '../components/Hero';
 import LoadingComp from '../components/Loading'
@@ -64,6 +64,12 @@ function Home() {
         enabled: !!search
     })
 
+    const onFocusScroll = () => {
+        document.getElementById('card-section')?.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
 
     if(isPopGamesLoading) return <LoadingComp/>;
     if(isbRevGamesLoading) return <LoadingComp/>;
@@ -77,8 +83,8 @@ function Home() {
     return (
         <div>
             <Hero popGames={popGames.results}/>
-            <SearchBar onSearch={handleSearch} value={input}/>
-            <CardContainer header={searchData?"Search Result":"Most Popular"} popGames={searchData?.results || popGames.results} bRevGames={bRevGames.results} rUpGames={rUpGames.results}/>
+            <SearchBar onSearch={handleSearch} value={input} onFocusScroll={onFocusScroll}/>
+            <CardContainer header={searchData?"Search Result":"Most Popular"} popGames={searchData?.results || popGames.results} bRevGames={bRevGames.results} rUpGames={rUpGames.results} />
         </div>
     )
 }
