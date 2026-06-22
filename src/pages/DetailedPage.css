@@ -86,6 +86,7 @@
 
 .video-player video{
     margin-top: 2rem;
+    max-height: 90vh;
 }
 
 .galary{
@@ -109,6 +110,7 @@
     object-position: top;
     border-radius: 20px;
     transition: 0.3s ease-in-out;
+    max-width: 70%;
 }
 
 .ss:hover{

@@ -1,5 +1,5 @@
 .app-container {
-    background: linear-gradient(-45deg, #000000, #290019);
+    background: rgba(0, 0, 5, 0.959);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
 }
